@@ -9,6 +9,7 @@ import { Overview } from './components/dashboard/Overview';
 import { JobManager } from './components/jobs/JobManager';
 import { BillingOverview } from './components/billing/BillingOverview';
 import { IncidentCenter } from './components/support/IncidentCenter';
+import { PipelineMaps } from './components/lineage/PipelineMaps';
 import { Projects } from './components/projects/Projects';
 import { AuditTrail } from './components/audit/AuditTrail';
 import { Tenants } from './components/tenants/Tenants';
@@ -22,12 +23,14 @@ import {
   AlertCircle, 
   Settings,
   Users,
-  History
+  History,
+  Network
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { icon: LayoutDashboard, label: 'Overview', id: 'overview' },
+  { icon: Network, label: 'Pipeline Maps', id: 'lineage' },
   { icon: Database, label: 'Projects', id: 'projects' },
   { icon: PlayCircle, label: 'Job Manager', id: 'jobs' },
   { icon: CreditCard, label: 'Billing & Usage', id: 'billing' },
@@ -43,6 +46,7 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'overview': return <Overview />;
+      case 'lineage': return <PipelineMaps />;
       case 'projects': return <Projects />;
       case 'jobs': return <JobManager />;
       case 'billing': return <BillingOverview />;

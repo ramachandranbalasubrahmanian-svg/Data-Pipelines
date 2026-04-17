@@ -1,7 +1,28 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User } from 'firebase/auth';
 import { getFirestore, doc, collection, onSnapshot, query, where, orderBy, setDoc, addDoc, updateDoc, deleteDoc, getDoc, getDocFromServer } from 'firebase/firestore';
-import firebaseConfig from '../../firebase-applet-config.json';
+
+// Detect environment and load configuration accordingly
+const firebaseConfig = {
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  firestoreDatabaseId: import.meta.env.VITE_FIREBASE_DATABASE_ID,
+};
+
+// Fallback for AI Studio preview environment if VITE variables aren't set yet
+if (!firebaseConfig.apiKey) {
+  try {
+    // @ts-ignore - Dynamic import to avoid build errors if file is missing in prod
+    const localConfig = await import('../../firebase-applet-config.json');
+    Object.assign(firebaseConfig, localConfig.default || localConfig);
+  } catch (e) {
+    console.warn("Firebase configuration not found in environment or local config file.");
+  }
+}
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);

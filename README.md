@@ -14,7 +14,17 @@ Data Pipelines is a high-performance orchestration and monitoring platform desig
 *   **Execution Auditing**: Deep-dive logs and execution metrics for every job run.
 *   **Configuration Upload**: Support for ZIP-based pipeline definitions directly from the dashboard.
 
-### 2. Tenant Management & Multi-Tenancy
+### 2. Pipeline Lineage & Mapping
+*   **Visual Blueprints**: Node-based lineage maps showing data flow from Extraction to Visualization.
+*   **Topology Health**: Real-time monitoring of synchronization links between pipeline stages.
+*   **Metadata Inventory**: Consolidated view of source systems (Salesforce, SAP) and downstream warehouses (BigQuery, Snowflake).
+
+### 3. Data Freshness & SLA Tracking
+*   **Freshness Scoreboard**: Real-time SLA monitoring for mission-critical data sources.
+*   **Health Metrics**: Percentage-based health scoring for every synchronization link.
+*   **Historical Trends**: 30-day velocity tracking to detect performance degradation before it impacts the business.
+
+### 4. Tenant Management & Multi-Tenancy
 *   **Isolated Data Views**: Seamless switching between multiple enterprise clients.
 *   **Governance**: Role-Based Access Control (RBAC) and data isolation across tenants.
 *   **Onboarding**: Automated tenant onboarding with specific capacity limits.
