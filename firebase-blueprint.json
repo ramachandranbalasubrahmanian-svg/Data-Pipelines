@@ -1,0 +1,99 @@
+{
+  "entities": {
+    "Tenant": {
+      "title": "Tenant",
+      "description": "A client organization using the platform",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "onboardedHours": { "type": "number" },
+        "monthlyRate": { "type": "number" },
+        "contactEmail": { "type": "string", "format": "email" },
+        "serviceAgreementDate": { "type": "string", "format": "date-time" },
+        "initialPayment": { "type": "number" }
+      },
+      "required": ["name", "contactEmail"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A logical grouping of data pipeline jobs",
+      "type": "object",
+      "properties": {
+        "tenantId": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["tenantId", "name"]
+    },
+    "Job": {
+      "title": "Job",
+      "description": "A single execution unit of a data pipeline",
+      "type": "object",
+      "properties": {
+        "projectId": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string", "enum": ["Queue", "Initiating", "Running", "Completed", "Failed", "Timeout"] },
+        "hardwareId": { "type": "string" },
+        "threads": { "type": "number" },
+        "startTime": { "type": "string", "format": "date-time" },
+        "endTime": { "type": "string", "format": "date-time" },
+        "executionTime": { "type": "number" },
+        "logs": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["projectId", "name", "status"]
+    },
+    "Incident": {
+      "title": "Incident",
+      "description": "An error event associated with a job",
+      "type": "object",
+      "properties": {
+        "jobId": { "type": "string" },
+        "jobName": { "type": "string" },
+        "errorMsg": { "type": "string" },
+        "kbId": { "type": "string" },
+        "status": { "type": "string", "enum": ["Open", "Resolved"] },
+        "severity": { "type": "string", "enum": ["P1", "P2", "P3"] },
+        "owner": { "type": "string" },
+        "explanation": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["jobId", "errorMsg", "kbId"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Immutable record of system actions",
+      "type": "object",
+      "properties": {
+        "user": { "type": "string" },
+        "action": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "ip": { "type": "string" }
+      },
+      "required": ["user", "action", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/tenants/{tenantId}": {
+      "schema": "Tenant",
+      "description": "Tenant organization data"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Project metadata"
+    },
+    "/jobs/{jobId}": {
+      "schema": "Job",
+      "description": "Job execution records"
+    },
+    "/incidents/{incidentId}": {
+      "schema": "Incident",
+      "description": "Incident and KB records"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "System audit trail"
+    }
+  }
+}
