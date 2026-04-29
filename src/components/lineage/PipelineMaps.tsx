@@ -19,13 +19,15 @@ const stages = [
   { id: 'src', label: 'Extract', icon: Database, color: 'blue', items: ['Salesforce', 'SAP', 'S3'] },
   { id: 'tra', label: 'Transform', icon: GitBranch, color: 'purple', items: ['SQL Spark', 'Python ETL', 'dbt'] },
   { id: 'loa', label: 'Load', icon: Zap, color: 'yellow', items: ['BigQuery', 'Snowflake'] },
+  { id: 'sem', label: 'Semantic', icon: GitBranch, color: 'blue', items: ['Metric Store', 'OLAP'] },
   { id: 'vis', label: 'Visualize', icon: LayoutDashboard, color: 'green', items: ['Looker', 'PowerBI'] },
 ];
 
 const connections = [
   { from: 'src', to: 'tra' },
   { from: 'tra', to: 'loa' },
-  { from: 'loa', to: 'vis' },
+  { from: 'loa', to: 'sem' },
+  { from: 'sem', to: 'vis' },
 ];
 
 export function PipelineMaps() {

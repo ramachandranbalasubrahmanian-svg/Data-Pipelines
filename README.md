@@ -41,6 +41,44 @@ Data Pipelines is a high-performance orchestration and monitoring platform desig
 
 ---
 
+## 🎬 Product Demo Guide (Executive Summary)
+
+This guide is designed for high-impact recording (GIF/Video) to showcase the platform to C-level stakeholders.
+
+### Step 1: The Command Center (Overview Dashboard)
+*   **Focus**: Global visibility and operational health.
+*   **Visuals**: Highlight the **Success Rate (98.2%)** and the **Data Freshness Scoreboard**.
+*   **Narrative**: "One view to rule all pipelines. We track data freshness in real-time, ensuring business decisions are made on current data, not stale logs."
+
+### Step 2: Visual Lineage (Pipeline Maps)
+*   **Focus**: Infrastructure control and transparency.
+*   **Visuals**: Hover over the **Extract -> Transform -> Load** nodes. Show the active flow animations.
+*   **Narrative**: "Complete observability. Our visual blueprints eliminate the 'black box' of data engineering, showing exactly how source data becomes business intelligence."
+
+### Step 3: AI-Driven Resilience (Incidents)
+*   **Focus**: Cost reduction and reduced MTTR (Mean Time To Recovery).
+*   **Visuals**: Click into a 'Failed' job and trigger the **"Analyze with Gemini AI"** feature.
+*   **Narrative**: "Self-healing infrastructure. When a pipeline breaks at 3 AM, our integrated AI performs an instant RCA and generates a remediation plan before the engineer even wakes up."
+
+### Step 4: Revenue & Capacity (Billing)
+*   **Focus**: Financial predictability and right-sizing.
+*   **Visuals**: Expand a **"Client in Overage"** card. Point to the **"Predicted Usage"** metric.
+*   **Narrative**: "Predictive P&L. We don't just bill; we forecast. The platform identifies which enterprise clients are scaling beyond their contract, turning overages into upsell opportunities."
+
+---
+
+## 🏛 Technical Architecture & Documentation
+
+For a deep dive into the system internals and how to present the platform to stakeholders, please refer to the following documents:
+
+*   **[Executive Demo Script](./EXECUTIVE_DEMO.md)**: A step-by-step narrative for showcasing the platform's value proposition.
+*   **[Architectural Diagrams](./DIAGRAMS.md)**: Comprehensive technical blueprints including:
+    *   **Data Flow Diagram (DFD)**: End-to-end data lifecycle.
+    *   **C4 Model (Context & Container)**: High-level architectural boundaries.
+    *   **Semantic Layer Blueprint**: Abstraction layer for metric consistency.
+
+---
+
 ## 🛠 Tech Stack
 
 *   **Frontend**: React (TypeScript), Tailwind CSS, Shadcn UI, Framer Motion (animations).
